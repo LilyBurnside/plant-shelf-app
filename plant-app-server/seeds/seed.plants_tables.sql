@@ -26,3 +26,5 @@ VALUES
   ('How often do you like to water?', 'On a regular schedule', 'I forget from time to time', 'Wait, plants need water?', null),
   ('How much space do you have for your new plant?', 'Some tablespace', 'Small floor space or larger tablespace', 'A good space filler', 'I want a tree!'),
   ('How much of a green thumb are you?', 'Green? Its a bit more of a black thumb', 'I''ve kept a few plants alive', 'I definitely have a green thumb!', null);
+
+  COMMIT;

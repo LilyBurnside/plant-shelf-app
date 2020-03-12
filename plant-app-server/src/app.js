@@ -4,6 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
+const quizRouter = require('./quiz/quiz-router');
 
 const { NODE_ENV } = require('./config');
 const app = express();
@@ -16,9 +17,7 @@ app.use(morgan(morganOption));
 app.use(cors());
 app.use(helmet());
 
-app.get('/', (req, res) => {
-  res.send('Hello world!');
-});
+app.use('/api/quiz', quizRouter);
 
 app.use(function errorHandler(error, req, res, next) { // eslint-disable-line no-unused-vars
   let response;
