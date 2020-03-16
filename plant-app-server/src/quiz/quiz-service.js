@@ -5,11 +5,6 @@ const QuizService = {
     return db 
       .select('*')
       .from('plants_questions');
-    // .join(
-    //   'plants_answers AS ans',
-    //   'que.id',
-    //   'ans.question',
-    // )
   },
 
   // getAllAnswers(db) {
@@ -17,6 +12,7 @@ const QuizService = {
   //     .select('*')
   //     .from('plants_answers');
   // },
+
 
   getById(db, id) {
     return db
