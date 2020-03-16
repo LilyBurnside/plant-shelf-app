@@ -1,6 +1,6 @@
 import React from 'react'
 import PlantsApiService from '../../services/plants-api-service'
-import { Link } from 'react-router-dom'
+//import { Link, useHistory } from 'react-router-dom'
 import QuizContext from '../../contexts/QuizContext'
 // import Question from '../Question/Question'
 
@@ -15,12 +15,15 @@ export default class Quiz extends React.Component {
       .catch(this.context.setError)
   }
 
-  handleNextPress = (e, answer) => {
+  handleNextPress = e => {
     e.preventDefault()
-    console.log(`target value in next press ${e.target.value}`)
-    this.context.addAnswer(e.target.value)
-    console.log(`answers array ${typeof this.context.answers}`)
+    console.log(`target value in next press ${e.target.answer.value}`)
+    this.context.addAnswer(e.target.answer.value)
+    console.log(`answers array ${this.context.answers}`)
     this.context.setQuestionId()
+    if (this.context.questionId === 5) {
+      this.props.history.push('/results')
+    }
   }
 
   // handleAnswerChange = (answer) => {
@@ -44,7 +47,7 @@ export default class Quiz extends React.Component {
             type="radio" 
             className="answer-option" 
             name="answer" 
-            value={question['answer_' + i]} 
+            value={i} 
             // checked={this.context.selectedAnswer === question['answer_' + i]} 
             // onChange={this.handleAnswerChange}
           />
@@ -66,14 +69,14 @@ export default class Quiz extends React.Component {
     } else if (!question) {
       return <div className="loading">loading...</div>
     } else if (question.id === 5) {
-      button = <Link to='/results'><button className="quiz-submit" type="submit" >Submit Quiz</button></Link>
+      button = <button className="quiz-submit" type="submit" >Submit Quiz</button>
     } else {
-      button = <button className="quiz-next" type="submit" onClick={this.handleNextPress}>Next</button>
+      button = <button className="quiz-next" type="submit" >Next</button>
     } 
     return(
       <div className="quiz">
        <h1>{question.question}</h1>
-       <form className="answer-list">
+       <form className="answer-list" onSubmit={this.handleNextPress}>
         {this.renderAnswers(question)}
         {button}
        </form>
