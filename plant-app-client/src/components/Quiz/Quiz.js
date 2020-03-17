@@ -1,6 +1,6 @@
 import React from 'react'
 import PlantsApiService from '../../services/plants-api-service'
-import { Link } from 'react-router-dom'
+//import { Link, useHistory } from 'react-router-dom'
 import QuizContext from '../../contexts/QuizContext'
 // import Question from '../Question/Question'
 
@@ -15,23 +15,17 @@ export default class Quiz extends React.Component {
       .catch(this.context.setError)
   }
 
-  handleNextPress = (e, answer) => {
-    e.preventDefault()
-    console.log(`target value in next press ${e.target.value}`)
-    this.context.addAnswer(e.target.value)
-    console.log(`answers array ${typeof this.context.answers}`)
-    this.context.setQuestionId()
-  }
-
-  // handleAnswerChange = (answer) => {
-  //   console.log(`target value in answer change ${answer.target.value}`)
-  //   console.log(this.context.changeAnswer)
-  //   this.context.changeAnswer(answer.target.value)
-  //   console.log(`selectedAnswer ${this.context.selectedAnswer}`)
-  // }
-
   componentWillUnmount() {
     this.context.resetQuestionId()
+  }
+
+  handleNextPress = e => {
+    e.preventDefault()
+    this.context.addAnswer(e.target.answer.value)
+    this.context.setQuestionId()
+    if (this.context.questionId === 5) {
+      this.props.history.push('/results')
+    }
   }
 
   renderAnswers = question => {
@@ -44,9 +38,7 @@ export default class Quiz extends React.Component {
             type="radio" 
             className="answer-option" 
             name="answer" 
-            value={question['answer_' + i]} 
-            // checked={this.context.selectedAnswer === question['answer_' + i]} 
-            // onChange={this.handleAnswerChange}
+            value={i} 
           />
             {question['answer_' + i]}
         </label>)
@@ -58,6 +50,7 @@ export default class Quiz extends React.Component {
   render(){
     const { error, questions } = this.context
     const question = questions.find(q => q.id === this.context.questionId)
+
     let button
     if (error) {
       return (error.error === `Question doesn't exist`)
@@ -66,14 +59,14 @@ export default class Quiz extends React.Component {
     } else if (!question) {
       return <div className="loading">loading...</div>
     } else if (question.id === 5) {
-      button = <Link to='/results'><button className="quiz-submit" type="submit" >Submit Quiz</button></Link>
+      button = <button className="quiz-submit" type="submit" >Submit Quiz</button>
     } else {
-      button = <button className="quiz-next" type="submit" onClick={this.handleNextPress}>Next</button>
+      button = <button className="quiz-next" type="submit" >Next</button>
     } 
     return(
       <div className="quiz">
        <h1>{question.question}</h1>
-       <form className="answer-list">
+       <form className="answer-list" onSubmit={this.handleNextPress}>
         {this.renderAnswers(question)}
         {button}
        </form>

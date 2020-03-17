@@ -5,6 +5,9 @@ const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
 const quizRouter = require('./quiz/quiz-router');
+const authRouter = require('./auth/auth-router');
+const resultsRouter = require('./results/results-router');
+const wishlistRouter = require('./wishlist/wishlist-router');
 
 const { NODE_ENV } = require('./config');
 const app = express();
@@ -17,7 +20,10 @@ app.use(morgan(morganOption));
 app.use(cors());
 app.use(helmet());
 
+app.use('/api/auth', authRouter);
+app.use('/api/results', resultsRouter);
 app.use('/api/quiz', quizRouter);
+app.use('/api/wishlist', wishlistRouter);
 
 app.use(function errorHandler(error, req, res, next) { // eslint-disable-line no-unused-vars
   let response;

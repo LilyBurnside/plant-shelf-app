@@ -6,6 +6,8 @@ const QuizContext = React.createContext({
   questionId: 1,
   selectedAnswer: '',
   answers: [],
+  translatedAnswers: [],
+  plants: [],
   error: null,
   setError: () => {},
   clearError: () => {},
@@ -15,7 +17,10 @@ const QuizContext = React.createContext({
   resetQuestionId: () => {},
   changeAnswer: () => {},
   setAnswers: () => {},
-  addAnswer: () => {}
+  addAnswer: () => {},
+  setTranslatedAnswers: () => {},
+  addTranslatedAnswer: () => {},
+  setPlants: () => {}
 })
 
 export default QuizContext
@@ -27,6 +32,9 @@ export class QuizProvider extends React.Component {
     questionId: 1,
     selectedAnswer: '',
     answers: [],
+    translatedAnswers: [],
+    plants: [],
+    error: null,
   };
 
   setError = error => {
@@ -69,6 +77,22 @@ export class QuizProvider extends React.Component {
     ])
   }
 
+  setTranslatedAnswers = translatedAnswers => {
+    this.setState({ translatedAnswers })
+  }
+
+  addTranslatedAnswer = translatedAnswer => {
+    this.setTranslatedAnswers([
+      ...this.state.translatedAnswers,
+      translatedAnswer
+    ])
+  }
+
+  setPlants = plants => {
+    // const newPlants = JSON.stringify(plants)
+    this.setState({ plants })
+  }
+
   render() {
     const value ={
       questions: this.state.questions,
@@ -76,6 +100,9 @@ export class QuizProvider extends React.Component {
       questionId: this.state.questionId,
       selectedAnswer: this.state.selectedAnswer,
       answers: this.state.answers,
+      translatedAnswers: this.state.translatedAnswers,
+      plants: this.state.plants,
+      error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
       setQuestions: this.setQuestions,
@@ -85,6 +112,9 @@ export class QuizProvider extends React.Component {
       changeAnswer: this.changeAnswer,
       setAnswers: this.setAnswers,
       addAnswer: this.addAnswer,
+      setTranslatedAnswers: this.setTranslatedAnswers,
+      addTranslatedAnswer: this.addTranslatedAnswer,
+      setPlants: this.setPlants,
     }
     return (
       <QuizContext.Provider value={value}>
