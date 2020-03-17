@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import PlantsApiService from '../../services/plants-api-service'
 import QuizContext from '../../contexts/QuizContext'
+import './Results.css'
 
 export default class Results extends React.Component {
   
@@ -16,6 +18,10 @@ export default class Results extends React.Component {
       .catch(this.context.setError)
   }
 
+  componentWillUnmount() {
+    this.context.clearPlants()
+    console.log(this.context.plants)
+  }
 
   firstAnswer = () => {
     const answer1 = this.context.answers[0]
@@ -97,23 +103,30 @@ export default class Results extends React.Component {
   handleAddWish = e => {
     //how do I know what userId is?
     const { userId } = 1
-    const { plantId } = e.target.value
+    //target is being a butt
+    const { plantId } = e.target.id
     console.log(plantId)
     PlantsApiService.postWish(userId, plantId)
       .catch(this.context.setError)
+  }
+
+  handleQuizButton = e => {
+    e.preventDefault()
+    this.props.history.push('/quiz')
   }
 
   renderResults = result => {
     const plants = this.context.plants
     
     const plantsArray = []
-    if(plants === []) {
+    if(!Array.isArray(plants) || !plants.length) {
       plantsArray.push(<h2>No plants found matching you :(</h2>)
     } else {
       for(let i = 0; i < plants.length ; i++ ) {
+        console.log(plants[i].id)
         plantsArray.push(
-          <div className="plant">
-            <img src={`https://${plants[i].photo}`} />
+          <div className="plant-results" >
+            <img src={`https://${plants[i].photo}`} alt={plants[i].sci_name} />
             <h2>{!plants[i].cmn_name ? plants[i].sci_name : plants[i].cmn_name}</h2>
             <ul>
               <li>also known as: {plants[i].sci_name}</li>
@@ -122,7 +135,7 @@ export default class Results extends React.Component {
               <li>pet safe? {plants[i].pet_safe}</li>
               <li>good for a {plants[i].size} space</li>
             </ul>
-            <button className="wishlist-button" value={plants[i].id} onClick={this.handleAddWish}>add to my wishlist</button>
+            <button className="wishlist-button" id={plants[i].id} onClick={this.handleAddWish}>add to my wishlist</button>
           </div>
         )
       }
@@ -146,6 +159,7 @@ export default class Results extends React.Component {
         <p>If you fancy one, add it to your wish list!</p>
         {content}
         {this.renderResults()}
+        <button className="quiz-restart" onClick={this.handleQuizButton}>Match me with more plants</button>
       </div>
     )
   }

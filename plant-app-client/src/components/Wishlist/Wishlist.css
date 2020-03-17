@@ -1,0 +1,43 @@
+*{
+  font-family: 'Spartan';
+}
+
+.wishlist {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+img {
+  width: 300px;
+  margin-top: 50px;
+}
+
+.plant {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #DBFFB7;
+  border-radius: 15px;
+  margin-top: 50px;
+  width: 100%;
+  height: 800px;
+}
+
+.plant > p {
+  margin-top: 20px;
+}
+
+.plant > a {
+  text-decoration: none;
+}
+
+.quiz-restart {
+  color: #494949 !important;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  border: 4px solid #494949 !important;
+}

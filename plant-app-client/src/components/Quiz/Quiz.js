@@ -2,7 +2,7 @@ import React from 'react'
 import PlantsApiService from '../../services/plants-api-service'
 //import { Link, useHistory } from 'react-router-dom'
 import QuizContext from '../../contexts/QuizContext'
-// import Question from '../Question/Question'
+import './Quiz.css'
 
 export default class Quiz extends React.Component {
 
