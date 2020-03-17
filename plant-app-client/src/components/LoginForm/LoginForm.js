@@ -13,7 +13,6 @@ export default class LoginForm extends React.Component {
     ev.preventDefault()
     this.setState({ error: null })
     const { user_name, password } = ev.target
-    // console.log(password.value)
     AuthApiService.postLogin({
       user_name: user_name.value,
       password: password.value,
@@ -21,7 +20,6 @@ export default class LoginForm extends React.Component {
       .then(res => {
         user_name.value = ''
         password.value = ''
-        console.log(res)
         TokenService.saveAuthToken(res.token)
         this.props.onLoginSuccess()
       })

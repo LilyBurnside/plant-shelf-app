@@ -6,6 +6,7 @@ import LandingPage from '../Landing/Landing'
 import QuizPage from '../Quiz/Quiz'
 import ResultsPage from '../Results/Results'
 import LoginPage from '../LoginPage/LoginPage'
+import WishlistPage from '../Wishlist/Wishlist'
 import './App.css';
 
 class App extends React.Component {
@@ -30,6 +31,10 @@ class App extends React.Component {
           <PublicOnlyRoute
             path={'/login'}
             component={LoginPage}
+          />
+          <PrivateRoute
+            path={'/wishlist'}
+            component={WishlistPage}
           />
         </Switch>
       </main>

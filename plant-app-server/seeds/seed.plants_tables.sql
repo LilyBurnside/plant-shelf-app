@@ -3,7 +3,9 @@ BEGIN;
 TRUNCATE
   plants_users,
   plants_base,
-  plants_questions
+  plants_questions,
+  plants_answers,
+  plants_wishes
   RESTART IDENTITY CASCADE;
 
 INSERT INTO plants_users (user_name, password)

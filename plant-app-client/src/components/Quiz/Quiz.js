@@ -15,26 +15,17 @@ export default class Quiz extends React.Component {
       .catch(this.context.setError)
   }
 
+  componentWillUnmount() {
+    this.context.resetQuestionId()
+  }
+
   handleNextPress = e => {
     e.preventDefault()
-    console.log(`target value in next press ${e.target.answer.value}`)
     this.context.addAnswer(e.target.answer.value)
-    console.log(`answers array ${this.context.answers}`)
     this.context.setQuestionId()
     if (this.context.questionId === 5) {
       this.props.history.push('/results')
     }
-  }
-
-  // handleAnswerChange = (answer) => {
-  //   console.log(`target value in answer change ${answer.target.value}`)
-  //   console.log(this.context.changeAnswer)
-  //   this.context.changeAnswer(answer.target.value)
-  //   console.log(`selectedAnswer ${this.context.selectedAnswer}`)
-  // }
-
-  componentWillUnmount() {
-    this.context.resetQuestionId()
   }
 
   renderAnswers = question => {
@@ -48,8 +39,6 @@ export default class Quiz extends React.Component {
             className="answer-option" 
             name="answer" 
             value={i} 
-            // checked={this.context.selectedAnswer === question['answer_' + i]} 
-            // onChange={this.handleAnswerChange}
           />
             {question['answer_' + i]}
         </label>)
@@ -61,6 +50,7 @@ export default class Quiz extends React.Component {
   render(){
     const { error, questions } = this.context
     const question = questions.find(q => q.id === this.context.questionId)
+
     let button
     if (error) {
       return (error.error === `Question doesn't exist`)

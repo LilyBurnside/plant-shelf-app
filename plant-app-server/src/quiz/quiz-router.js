@@ -39,30 +39,4 @@ quizRouter
 //     .catch(next);
 // });
 
-// quizRouter
-//   .route('/:question_id')
-//   .all(checkQuestionExists)
-//   .get((req, res) => {
-//     res.json(serializeQuestion(res.question));
-//   });
-
-// async function checkQuestionExists(req, res, next) {
-//   try{
-//     const question = await QuizService.getById(
-//       req.app.get('db'),
-//       req.params.question_id
-//     )
-
-//     if (!question)
-//       return res.status(404).json({
-//         error: `Question doesn't exist`
-//       })
-
-//     res.question = question
-//     next()
-//   } catch (error) {
-//     next(error)
-//   }
-// }
-
 module.exports = quizRouter;

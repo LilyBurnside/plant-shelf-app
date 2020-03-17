@@ -1,9 +1,9 @@
 'use strict';
 const express = require('express');
-const ResultsService = require('./results-service');
+const WishlistService = require('./wishlist-service');
 const { requireAuth } = require('../jwt-auth');
 
-const resultsRouter = express.Router();
+const wishlistRouter = express.Router();
 const jsonBodyParser = express.json();
 
 const serializePlant = plant => ({
@@ -18,10 +18,10 @@ const serializePlant = plant => ({
   care_level: plant.care_level,
 });
 
-// const serializeUser = user => ({
-//   id: user.id,
-//   user_name: user.user_name,
-// });
+const serializeUser = user => ({
+  id: user.id,
+  user_name: user.user_name,
+});
 
 const serializeWish = wish => ({
   id: wish.id,
@@ -29,21 +29,20 @@ const serializeWish = wish => ({
   user_id: wish.user_id,
 });
 
-resultsRouter
+wishlistRouter
   .route('/')
-  .get((req, res, next) => { 
-    //query validation goes here
-    ResultsService.getAllPlants(req.app.get('db'), req.query)
+  .get(requireAuth, (req, res, next) => {
+    WishlistService.getWishes(req.app.get('db'))
       .then(plants => {
         res.json(plants.map(serializePlant));
       })
-      .catch(next);  
+      .catch(next);
   })
   .post(requireAuth, jsonBodyParser, (req, res, next) => {
     const { user_id, plant_id } = req.body;
     const newWish = { user_id, plant_id };
 
-    ResultsService.insertWishlistPlant(req.app.get('db'), newWish)
+    WishlistService.insertWish(req.app.get('db'), newWish)
       .then(wish => {
         res
           .status(201)
@@ -52,4 +51,4 @@ resultsRouter
       .catch(next);
   });
 
-module.exports = resultsRouter;
+module.exports = wishlistRouter;
