@@ -5,23 +5,6 @@ import TokenService from '../../services/token-service'
 import './Landing.css'
 
 export default class Landing extends React.Component {
-  
-  //Once I set up auth I can render login vs logout
-
-  // renderLoginLink() {
-  //   return(
-  //     <div className='Landing not-logged-in'>
-  //       <Link
-  //         to='/login'>
-  //         Log in
-  //       </Link>
-  //       <Link
-  //         to='/register'>
-  //           Register
-  //       </Link>
-  //     </div>
-  //   )
-  // }
 
   renderLoggedInView() {
     return(
@@ -56,7 +39,7 @@ export default class Landing extends React.Component {
 
         <section className='lower'>
           <Link to='/login'>
-            <button className='login'>Login to show my wishlist</button>
+            <button className='login-landing-button'>Login to show my wishlist</button>
           </Link>
         </section>
       </div>

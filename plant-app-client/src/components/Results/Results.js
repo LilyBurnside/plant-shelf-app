@@ -1,6 +1,7 @@
 import React from 'react'
 import PlantsApiService from '../../services/plants-api-service'
 import QuizContext from '../../contexts/QuizContext'
+import TokenService from '../../services/token-service'
 import './Results.css'
 
 export default class Results extends React.Component {
@@ -19,7 +20,7 @@ export default class Results extends React.Component {
 
   componentWillUnmount() {
     this.context.clearPlants()
-    console.log(this.context.plants)
+    this.context.clearAnswers()
   }
 
   firstAnswer = () => {
@@ -61,7 +62,7 @@ export default class Results extends React.Component {
     } else if (answer3 === "2") {
       answer = 'medium'
     } else if (answer3 === "3") {
-      answer = 'light'
+      answer = 'low'
     } 
     return answer
 
@@ -104,8 +105,9 @@ export default class Results extends React.Component {
     //how do I know what userId is?
     const userId = 1
     const plantId = id
-    console.log(plantId)
+
     PlantsApiService.postWish(userId, plantId)
+      .then(alert("Plant was added to the wishlist!"))
       .catch(this.context.setError)
   }
 
@@ -124,7 +126,7 @@ export default class Results extends React.Component {
       for(let i = 0; i < plants.length ; i++ ) {
         plantsArray.push(
           <div className="plant-results" >
-            <img src={`https://${plants[i].photo}`} alt={plants[i].sci_name} />
+            <img src={`${plants[i].photo}`} alt={plants[i].sci_name} />
             <h2>{!plants[i].cmn_name ? plants[i].sci_name : plants[i].cmn_name}</h2>
             <ul>
               <li>also known as: {plants[i].sci_name}</li>
@@ -144,7 +146,9 @@ export default class Results extends React.Component {
   render(){
     const { plants, error } = this.context
     let content 
-    if (error) {
+    if (!TokenService.hasAuthToken()) {
+      content = <p>You'll have to log in to add to Wishlist</p>
+    } else if (error) {
       content = (error.error === `Question doesn't exist`)
         ? <p className="red">Question not found</p>
         : <p className="red">There was an error</p>
@@ -157,7 +161,7 @@ export default class Results extends React.Component {
         <p>If you fancy one, add it to your wish list!</p>
         {content}
         {this.renderResults()}
-        <button className="quiz-restart" onClick={this.handleQuizButton}>Match me with more plants</button>
+        <button className="quiz-restart-results" onClick={this.handleQuizButton}>Match me with more plants</button>
       </div>
     )
   }

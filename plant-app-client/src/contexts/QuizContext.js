@@ -4,7 +4,7 @@ const QuizContext = React.createContext({
   questions: [],
   question: null,
   questionId: 1,
-  selectedAnswer: '',
+  addedMessage: [<p>Added to wishlist!</p>],
   answers: [],
   translatedAnswers: [],
   plants: [],
@@ -15,9 +15,9 @@ const QuizContext = React.createContext({
   setQuestion: () => {},
   setQuestionId: () => {},
   resetQuestionId: () => {},
-  changeAnswer: () => {},
   setAnswers: () => {},
   addAnswer: () => {},
+  clearAnswers: () => {},
   setTranslatedAnswers: () => {},
   addTranslatedAnswer: () => {},
   setPlants: () => {},
@@ -31,7 +31,7 @@ export class QuizProvider extends React.Component {
     questions:[],
     question: null,
     questionId: 1,
-    selectedAnswer: '',
+    addedMessage: [<p>Added to wishlist!</p>],
     answers: [],
     translatedAnswers: [],
     plants: [],
@@ -63,10 +63,6 @@ export class QuizProvider extends React.Component {
     this.setState({ questionId: this.state.questionId - 5})
   }
 
-  changeAnswer = answer => {
-    this.setState({ selectedAnswer: answer })
-  }
-
   setAnswers = answers => {
     this.setState({ answers })
   }
@@ -76,6 +72,10 @@ export class QuizProvider extends React.Component {
       ...this.state.answers,
       answer
     ])
+  }
+
+  clearAnswers = answers => {
+    this.setState({ answers: [] })
   }
 
   setTranslatedAnswers = translatedAnswers => {
@@ -90,7 +90,6 @@ export class QuizProvider extends React.Component {
   }
 
   setPlants = plants => {
-    // const newPlants = JSON.stringify(plants)
     this.setState({ plants })
   }
 
@@ -103,7 +102,7 @@ export class QuizProvider extends React.Component {
       questions: this.state.questions,
       question: this.state.question,
       questionId: this.state.questionId,
-      selectedAnswer: this.state.selectedAnswer,
+      addedMessage: this.state.addedMessage,
       answers: this.state.answers,
       translatedAnswers: this.state.translatedAnswers,
       plants: this.state.plants,
@@ -114,9 +113,9 @@ export class QuizProvider extends React.Component {
       setQuestion: this.setQuestion,
       setQuestionId: this.setQuestionId,
       resetQuestionId: this.resetQuestionId,
-      changeAnswer: this.changeAnswer,
       setAnswers: this.setAnswers,
       addAnswer: this.addAnswer,
+      clearAnswers: this.clearAnswers,
       setTranslatedAnswers: this.setTranslatedAnswers,
       addTranslatedAnswer: this.addTranslatedAnswer,
       setPlants: this.setPlants,
