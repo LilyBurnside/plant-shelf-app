@@ -49,6 +49,15 @@ wishlistRouter
           .json(wish.map(serializeWish));
       })
       .catch(next);
+  })
+  .delete((req, res, next) =>{
+    const { id } = req.body;
+
+    WishlistService.deleteWish(req.app.get('db'), id)
+      .then(() => {
+        res.status(204).end();
+      })
+      .catch(next);
   });
 
 module.exports = wishlistRouter;

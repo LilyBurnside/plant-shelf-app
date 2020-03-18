@@ -22,18 +22,53 @@ img {
   border-radius: 15px;
   margin-top: 50px;
   width: 100%;
-  height: 600px;
 }
 
 .plant-results ul {
-  margin-top: 50px;
+  margin-top: 30px;
+  list-style-type: none;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.plant-results li {
+  padding-top: 10px;
+}
+
+.plant-results li:before {
+  content: '🌱';
+  padding-right: 5px;
 }
 
 .wishlist-button {
   background: #5A7F35;
-  color: white;
+  border: 2px solid #494949 !important;
+  color: #DBFFB7 !important;
   padding: 5px 15px;
   border-radius: 15px;
   margin-left: 10px;
   text-decoration: none;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.wishlist-button:hover {
+  background-color: #D58BFA;
+  transition: .25s;
+}
+
+.quiz-restart-results {
+  color: #494949 !important;
+  text-decoration: none;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  border: 4px solid #494949;
+  margin-bottom: 20px;
+}
+
+.quiz-restart-results:hover {
+  background-color: #D58BFA;
+  color: white !important;
+  transition: .25s;
 }

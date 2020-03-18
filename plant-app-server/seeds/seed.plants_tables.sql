@@ -14,18 +14,18 @@ VALUES
 
 INSERT INTO plants_base (cmn_name, sci_name, photo, light, pet_safe, water, size, care_level)
 VALUES
-  ('Pothos', 'Epipremnum aureum', 's3://plant-app-images/aloe-vera.jpg', 'medium', 'no', 'light', 'tabletop', 'beginner'),
-  ('Aloe', 'Aloe barbadensis', 's3://plant-app-images/aloe-vera.jpg', 'high', 'no', 'light', 'tabletop', 'beginner'),
-  ('Cast iron plant', 'Aspidistra elatior', 's3://plant-app-images/aloe-vera.jpg', 'low', 'yes', 'light', 'meduim', 'beginner'),
-  ('Chinese evergreen', 'Aglaonema', 's3://plant-app-images/aglaonema.jpg', 'medium', 'no', 'high', 'small', 'intermediate'),
-  ('Peace lily', 'Spathiphyllum', 's3://plant-app-images/monstera-adasonii.jpg', 'medium', 'no', 'high', 'tabletop', 'beginner'),
-  ('Staghorn fern', 'Platycerium alcicorn', 's3://plant-app-images/monstera-adasonii.jpg', 'high', 'yes', 'high', 'small', 'advanced'),
-  ('African violet', 'Saintpaulia', 's3://plant-app-images/monstera-deliciosa.jpg', 'medium', 'yes', 'high', 'tabletop', 'advanced'),
-  ('Banana tree', 'musa spp.', 's3://plant-app-images/monstera-deliciosa.jpg', 'high', 'yes', 'high', 'large', 'beginner'),
-  (null, 'Monstera deliciosa', 's3://plant-app-images/monstera-deliciosa.jpg', 'medium', 'no', 'medium', 'medium', 'intermediate'),
-  ('Swiss cheese vine', 'Monstera adasonii', 's3://plant-app-images/monstera-adasonii.jpg', 'medium', 'no', 'medium', 'small', 'intermediate'),
-  ('Snake plant', 'Sansevieria trifasciata', 's3://plant-app-images/sansevieria-trifasciata.jpg', 'low', 'no', 'low', 'tabletop', 'beginner'),
-  (null, 'Plasticus ficus', 's3://plant-app-images/sansevieria-trifasciata.jpg', 'none', 'yes', 'low', 'tabletop', 'beginner');
+  ('Pothos', 'Epipremnum aureum', 'https://plant-app-images.s3.us-east-2.amazonaws.com/epipremnum-aureum.jpg', 'medium', 'no', 'low', 'tabletop', 'beginner'),
+  ('Aloe', 'Aloe barbadensis', 'https://plant-app-images.s3.us-east-2.amazonaws.com/aloe-vera.jpg', 'high', 'no', 'low', 'tabletop', 'beginner'),
+  ('Cast iron plant', 'Aspidistra elatior', 'https://plant-app-images.s3.us-east-2.amazonaws.com/aspidistra-elatior.jpg', 'low', 'yes', 'low', 'medium', 'beginner'),
+  ('Chinese evergreen', 'Aglaonema', 'https://plant-app-images.s3.us-east-2.amazonaws.com/aglaonema.jpg', 'medium', 'no', 'high', 'small', 'intermediate'),
+  ('Peace lily', 'Spathiphyllum', 'https://plant-app-images.s3.us-east-2.amazonaws.com/spathiphyllum.jpg', 'medium', 'no', 'high', 'tabletop', 'beginner'),
+  ('Staghorn fern', 'Platycerium alcicorn', 'https://plant-app-images.s3.us-east-2.amazonaws.com/platycerium-alcicorn.jpeg', 'high', 'yes', 'high', 'small', 'advanced'),
+  ('African violet', 'Saintpaulia', 'https://plant-app-images.s3.us-east-2.amazonaws.com/saintpaulia.jpg', 'medium', 'yes', 'high', 'tabletop', 'advanced'),
+  ('Banana tree', 'musa spp.', 'https://plant-app-images.s3.us-east-2.amazonaws.com/musa-spp.jpg', 'high', 'yes', 'high', 'large', 'beginner'),
+  (null, 'Monstera deliciosa', 'https://plant-app-images.s3.us-east-2.amazonaws.com/monstera-deliciosa.jpg', 'medium', 'no', 'medium', 'medium', 'intermediate'),
+  ('Swiss cheese vine', 'Monstera adasonii', 'https://plant-app-images.s3.us-east-2.amazonaws.com/monstera-adasonii.jpg', 'medium', 'no', 'medium', 'small', 'intermediate'),
+  ('Snake plant', 'Sansevieria trifasciata', 'https://plant-app-images.s3.us-east-2.amazonaws.com/sansevieria-trifasciata.jpg', 'low', 'no', 'low', 'tabletop', 'beginner'),
+  (null, 'Plasticus ficus', 'https://plant-app-images.s3.us-east-2.amazonaws.com/plasticus-ficus.jpg', 'none', 'yes', 'low', 'tabletop', 'beginner');
 
 INSERT INTO plants_questions (question, answer_1, answer_2, answer_3, answer_4)
 VALUES

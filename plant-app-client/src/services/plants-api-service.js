@@ -52,6 +52,24 @@ const PlantsApiService = {
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
+  },
+
+  deleteWish(plantId) {
+    return fetch(`${config.API_ENDPOINT}/wishlist`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({
+        id: plantId,
+      }),
+    })
+      .then(res => 
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+        )
   }
   
 }

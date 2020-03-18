@@ -5,71 +5,44 @@ import TokenService from '../../services/token-service'
 import './Landing.css'
 
 export default class Landing extends React.Component {
-  
-  //Once I set up auth I can render login vs logout
-
-  // renderLoginLink() {
-  //   return(
-  //     <div className='Landing not-logged-in'>
-  //       <Link
-  //         to='/login'>
-  //         Log in
-  //       </Link>
-  //       <Link
-  //         to='/register'>
-  //           Register
-  //       </Link>
-  //     </div>
-  //   )
-  // }
 
   renderLoggedInView() {
     return(
-      <div className='Landing'>
-        <section className='title'>
-          <h1>The Plant Shelf</h1>
-          <p>Find the right plant for you</p>
-          <Link to='/quiz'>
-            <button className='find-match'>Find my match ></button>
-          </Link>
-        </section>
-
         <section className='lower'>
           <Link to='/wishlist'>
             <button className='wishlist-link'>Show my wishlist</button>
           </Link>
         </section>
-      </div>
     )
   }
 
   renderLoggedOutView() {
     return(
-      <div className='Landing'>
-        <section className='title'>
-          <h1>The Plant Shelf</h1>
-          <p>Find the right plant for you</p>
-          <Link to='/quiz'>
-            <button className='find-match'>Find my match ></button>
-          </Link>
-        </section>
-
         <section className='lower'>
           <Link to='/login'>
-            <button className='login'>Login to show my wishlist</button>
+            <button className='login-landing-button'>Login to show my wishlist</button>
           </Link>
         </section>
-      </div>
     )
   }
 
   render() {
     return(
-      <>
+      
+      <div className='Landing'>
+        <section className='title'>
+          <h1>The Plant Shelf</h1>
+          <p>Find the right plant for you and add it to your plant wishlist!</p>
+          <Link to='/quiz'>
+            <button className='find-match'>Find my match ></button>
+          </Link>
+        </section>
+
         {TokenService.hasAuthToken()
           ? this.renderLoggedInView()
           : this.renderLoggedOutView()}
-      </>
+
+      </div>
     )
   }
 }

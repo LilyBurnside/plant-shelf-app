@@ -32,6 +32,12 @@ const WishlistService = {
       .then(WishlistService.getWishes(db));
   },
 
+  deleteWish(db, id) {
+    return db
+      .where({ id })
+      .delete();
+  }
+
 };
 
 module.exports = WishlistService;
