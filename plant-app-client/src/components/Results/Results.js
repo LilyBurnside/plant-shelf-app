@@ -129,11 +129,11 @@ export default class Results extends React.Component {
             <img src={`${plants[i].photo}`} alt={plants[i].sci_name} />
             <h2>{!plants[i].cmn_name ? plants[i].sci_name : plants[i].cmn_name}</h2>
             <ul>
-              <li>also known as: {plants[i].sci_name}</li>
-              <li>likes: {plants[i].light} light | {plants[i].water} water</li>
-              <li>good for {plants[i].care_level} plant parents</li>
-              <li>pet safe? {plants[i].pet_safe}</li>
-              <li>good for a {plants[i].size} space</li>
+              <li>Also known as: {plants[i].sci_name}</li>
+              <li>Likes: {plants[i].light} light | {plants[i].water} water</li>
+              <li>Good for {plants[i].care_level} plant parents</li>
+              <li>Pet safe? {plants[i].pet_safe}</li>
+              <li>Good for a {plants[i].size} space</li>
             </ul>
             <button className="wishlist-button" id={plants[i].id} onClick={(e) => this.handleAddWish(plants[i].id, e)}>add to my wishlist</button>
           </div>

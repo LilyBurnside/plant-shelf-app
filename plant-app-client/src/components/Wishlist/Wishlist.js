@@ -52,8 +52,8 @@ export default class Wishlist extends React.Component {
           <div className="plant">
             <img src={`${wishlist[i].photo}`} alt={wishlist[i].sci_name} />
             <h2>{!wishlist[i].cmn_name ? wishlist[i].sci_name : wishlist[i].cmn_name}</h2>
-            <p>also known as: {wishlist[i].sci_name}</p>
-            <p>try to find it from these online sources:</p>
+            <p>Also known as: {wishlist[i].sci_name}</p>
+            <p>Try to find it from these online sources:</p>
             <a href="https://www.gabriellaplants.com/">Gabriella Plants</a>
             <a href="https://stevesleaves.com/">Steve's Leaves</a>
             <button className="delete" onClick={(e) => this.handleDeleteButton(wishlist[i].id, e)}>Delete plant</button>

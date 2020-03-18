@@ -1,7 +1,3 @@
-*{
-  font-family: 'Spartan';
-}
-
 .wishlist {
   display: flex;
   align-items: center;
@@ -30,6 +26,12 @@ img {
 
 .plant > a {
   text-decoration: none;
+  padding-top: 5px;
+}
+
+.plant > a:hover {
+  color: #D58BFA;
+  transition: .25s;
 }
 
 .quiz-restart {
@@ -39,4 +41,27 @@ img {
   padding: 20px;
   border-radius: 15px;
   border: 4px solid #494949 !important;
+  margin-bottom: 50px;
 }
+
+.delete {
+  background: #5A7F35;
+  border: 2px solid #494949 !important;
+  color: #DBFFB7 !important;
+  padding: 5px 15px;
+  border-radius: 15px;
+  margin-left: 10px;
+  text-decoration: none;
+  border: none;
+  margin-bottom: 20px;
+}
+
+/*need to display results in a row on larger screens (results too)
+@media screen and (min-width: 750px) {
+  .plant-results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+}*/

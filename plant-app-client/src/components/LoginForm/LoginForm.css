@@ -25,7 +25,7 @@ div > label {
   padding: 10px;
 }
 
-button {
+.button-loginForm {
   color: #494949 !important;
   text-decoration: none;
   background: white;
@@ -35,7 +35,7 @@ button {
   border-radius: 15px;
 }
 
-button:hover {
+.button-loginForm:hover {
   background-color: #D58BFA;
   color: white !important;
   transition: .25s;
