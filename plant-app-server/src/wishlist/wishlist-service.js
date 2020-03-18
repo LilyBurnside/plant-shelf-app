@@ -29,7 +29,6 @@ const WishlistService = {
       .insert(newWish)
       .into('plants_wishes')
       .returning('*')
-      // .then(([wish]) => wish)
       .then(WishlistService.getWishes(db));
   },
 

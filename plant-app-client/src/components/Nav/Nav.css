@@ -1,0 +1,72 @@
+* {
+  font-family: 'Spartan';
+}
+
+.Nav {
+  height: 40px;
+  display: flex;
+  align-items: normal;
+  justify-content: space-between;
+  background-color: #EFF9F4;
+}
+
+.Nav h1 {
+  margin: 0;
+}
+
+.Nav a {
+  color: #07312F;
+  text-decoration: none;
+}
+
+.Nav__tagline--wide {
+  opacity: 0.35;
+  margin-left: 10px;
+}
+
+.Nav__tagline--narrow {
+  opacity: 0.35;
+  display: block;
+  text-align: center;
+  display: none;
+  margin-top: 10px;
+}
+
+.Nav__logged-in {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.Nav__logged-in a:last-child {
+  background: #D58BFA;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+
+.Nav__not-logged-in a {
+  background: #D58BFA;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 15px;
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 450px) {
+  .Nav {
+    align-items: baseline;
+  }
+
+  .Nav h1 {
+    font-size: 22pt;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .Nav__tagline--wide {
+    display: none;
+  }
+}

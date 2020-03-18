@@ -20,7 +20,8 @@ const QuizContext = React.createContext({
   addAnswer: () => {},
   setTranslatedAnswers: () => {},
   addTranslatedAnswer: () => {},
-  setPlants: () => {}
+  setPlants: () => {},
+  clearPlants: () => {}
 })
 
 export default QuizContext
@@ -59,7 +60,7 @@ export class QuizProvider extends React.Component {
   }
 
   resetQuestionId = questionId => {
-    this.setState({ questionId: this.state.questionId - 4})
+    this.setState({ questionId: this.state.questionId - 5})
   }
 
   changeAnswer = answer => {
@@ -93,6 +94,10 @@ export class QuizProvider extends React.Component {
     this.setState({ plants })
   }
 
+  clearPlants = plants => {
+    this.setState({ plants: [] })
+  }
+
   render() {
     const value ={
       questions: this.state.questions,
@@ -115,6 +120,7 @@ export class QuizProvider extends React.Component {
       setTranslatedAnswers: this.setTranslatedAnswers,
       addTranslatedAnswer: this.addTranslatedAnswer,
       setPlants: this.setPlants,
+      clearPlants: this.clearPlants,
     }
     return (
       <QuizContext.Provider value={value}>

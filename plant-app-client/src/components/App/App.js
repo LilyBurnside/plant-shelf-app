@@ -7,37 +7,43 @@ import QuizPage from '../Quiz/Quiz'
 import ResultsPage from '../Results/Results'
 import LoginPage from '../LoginPage/LoginPage'
 import WishlistPage from '../Wishlist/Wishlist'
+import Nav from '../Nav/Nav'
 import './App.css';
 
 class App extends React.Component {
 
   render(){
     return (
-      <main className='App main'>
-        <Switch>
-          <Route
-            exact
-            path={'/'}
-            component={LandingPage}
-          />
-          <Route 
-            path={'/quiz'}
-            component={QuizPage}
-          />
-          <Route
-            path={'/results'}
-            component={ResultsPage}
-          />
-          <PublicOnlyRoute
-            path={'/login'}
-            component={LoginPage}
-          />
-          <PrivateRoute
-            path={'/wishlist'}
-            component={WishlistPage}
-          />
-        </Switch>
-      </main>
+      <div className='App'>
+        <header className='App header'>
+          <Nav />
+        </header>
+        <main className='App main'>
+          <Switch>
+            <Route
+              exact
+              path={'/'}
+              component={LandingPage}
+            />
+            <Route 
+              path={'/quiz'}
+              component={QuizPage}
+            />
+            <Route
+              path={'/results'}
+              component={ResultsPage}
+            />
+            <PublicOnlyRoute
+              path={'/login'}
+              component={LoginPage}
+            />
+            <PrivateRoute
+              path={'/wishlist'}
+              component={WishlistPage}
+            />
+          </Switch>
+        </main>
+      </div>
     );
   }
 }

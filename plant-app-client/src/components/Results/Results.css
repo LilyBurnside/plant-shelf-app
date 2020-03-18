@@ -1,0 +1,39 @@
+* {
+  font-family: 'Spartan';
+}
+
+.results {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+img {
+  width: 300px;
+  margin-top: 50px;
+}
+
+.plant-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #DBFFB7;
+  border-radius: 15px;
+  margin-top: 50px;
+  width: 100%;
+  height: 600px;
+}
+
+.plant-results ul {
+  margin-top: 50px;
+}
+
+.wishlist-button {
+  background: #5A7F35;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 15px;
+  margin-left: 10px;
+  text-decoration: none;
+}

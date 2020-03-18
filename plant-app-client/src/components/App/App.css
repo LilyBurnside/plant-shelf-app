@@ -1,46 +1,24 @@
 * {
   font-family: 'Spartan';
+  color: #07312F;
 }
 
-body {
-  margin: 0;
-}
-
-main {
+.App main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-section.title {
-  background-color: lightgrey;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 25%;
-  padding-bottom: 30%;
-}
-
-section.lower {
-  margin-top: 80px;
-}
-
-.find-match {
-  color: #494949 !important;
-  text-decoration: none;
-  background: #ffffff;
-  padding: 20px;
-  border: 4px solid #494949 !important;
-  margin-top: 50px;
+  /* background-image: url("https://plant-app-images.s3.us-east-2.amazonaws.com/background-1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right bottom;
+  height: 100vh; */
 }
  
 .login {
-  color: #494949 !important;
+  color: #07312F;
   text-decoration: none;
-  background: #ffffff;
+  background: #EFF9F4;
   padding: 20px;
-  border: 4px solid #494949 !important;
+  border: 4px solid #07312F;
 }
