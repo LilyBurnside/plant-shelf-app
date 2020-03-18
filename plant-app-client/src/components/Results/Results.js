@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import PlantsApiService from '../../services/plants-api-service'
 import QuizContext from '../../contexts/QuizContext'
 import './Results.css'
@@ -100,11 +99,11 @@ export default class Results extends React.Component {
   
   }
 
-  handleAddWish = e => {
+  handleAddWish = (id, e) => {
+    e.preventDefault()
     //how do I know what userId is?
-    const { userId } = 1
-    //target is being a butt
-    const { plantId } = e.target.id
+    const userId = 1
+    const plantId = id
     console.log(plantId)
     PlantsApiService.postWish(userId, plantId)
       .catch(this.context.setError)
@@ -123,7 +122,6 @@ export default class Results extends React.Component {
       plantsArray.push(<h2>No plants found matching you :(</h2>)
     } else {
       for(let i = 0; i < plants.length ; i++ ) {
-        console.log(plants[i].id)
         plantsArray.push(
           <div className="plant-results" >
             <img src={`https://${plants[i].photo}`} alt={plants[i].sci_name} />
@@ -135,7 +133,7 @@ export default class Results extends React.Component {
               <li>pet safe? {plants[i].pet_safe}</li>
               <li>good for a {plants[i].size} space</li>
             </ul>
-            <button className="wishlist-button" id={plants[i].id} onClick={this.handleAddWish}>add to my wishlist</button>
+            <button className="wishlist-button" id={plants[i].id} onClick={(e) => this.handleAddWish(plants[i].id, e)}>add to my wishlist</button>
           </div>
         )
       }

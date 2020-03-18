@@ -33,13 +33,15 @@ export default class Quiz extends React.Component {
     for(let i = 1; i <= 4; i++) {
       if (question['answer_' + i]) {
       answers.push(
-        <label key={i} htmlFor="answer">
+        <label key={i} className="answer-label" htmlFor={i}>
           <input 
             type="radio" 
             className="answer-option" 
-            name="answer" 
+            name="answer"
+            id={i} 
             value={i} 
           />
+          <i></i>
             {question['answer_' + i]}
         </label>)
       }

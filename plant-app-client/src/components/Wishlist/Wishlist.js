@@ -16,8 +16,7 @@ export default class Wishlist extends React.Component {
       .then(this.setWishlist)
       .catch(res=> {
         this.setState({error: res.error})
-      })
-    console.log(this.state.wishlist)
+      })     
   }
 
   setWishlist = wishlist => {
@@ -30,7 +29,7 @@ export default class Wishlist extends React.Component {
   }
 
   renderWishlist() {
-    const { wishlist } = this.state.wishlist
+    const wishlist = this.state.wishlist
 
     const wishlistArray = []
     if(!Array.isArray(wishlist) || !wishlist.length) {

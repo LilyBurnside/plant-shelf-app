@@ -8,10 +8,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url("https://plant-app-images.s3.us-east-2.amazonaws.com/background-1.jpg");
+  /* background-image: url("https://plant-app-images.s3.us-east-2.amazonaws.com/background-1.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   background-position: right bottom;
+  height: 100vh; */
 }
  
 .login {

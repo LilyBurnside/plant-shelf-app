@@ -10,15 +10,6 @@ const PlantsApiService = {
         : res.json()
       )
   },
-  
-  getQuestion(questionId) {
-    return fetch(`${config.API_ENDPOINT}/quiz/${questionId}`)
-      .then(res => 
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
-  },
 
   getPlants(answers){
     return fetch(`${config.API_ENDPOINT}/results?light=${answers[0]}&pet_safe=${answers[1]}&water=${answers[2]}&size=${answers[3]}&care_level=${answers[4]}`)
@@ -33,6 +24,7 @@ const PlantsApiService = {
     return fetch(`${config.API_ENDPOINT}/wishlist`, {
       method: 'GET',
       headers: {
+        'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`
       }
     })

@@ -5,8 +5,10 @@ import TokenService from '../../services/token-service'
 import './Nav.css'
 
 export default class Nav extends Component {
+
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
+    window.location.reload()
   }
 
   renderLogoutLink() {
