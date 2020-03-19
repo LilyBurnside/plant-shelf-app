@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Wishlist Component renders a message with no plants when empty 1`] = `
+<div
+  className="wishlist"
+>
+  <h1>
+    Your Future Plants
+  </h1>
+  <p>
+    Wishlisted plants live here until you find them!
+  </p>
+  <div
+    className="wishlist-plant-list"
+  >
+    <h2>
+      Nothing here yet, take the quiz to add a plant!
+    </h2>
+  </div>
+  <button
+    className="quiz-restart"
+    onClick={[Function]}
+  >
+    Match me with more plants
+  </button>
+</div>
+`;
+
+exports[`Wishlist Component renders a wishlisted plant 1`] = `<Wishlist />`;

@@ -160,7 +160,9 @@ export default class Results extends React.Component {
         <h1>Some plants for you!</h1>
         <p>If you fancy one, add it to your wish list!</p>
         {content}
-        {this.renderResults()}
+        <div className="results-plant-list">
+          {this.renderResults()}
+        </div>
         <button className="quiz-restart-results" onClick={this.handleQuizButton}>Match me with more plants</button>
       </div>
     )

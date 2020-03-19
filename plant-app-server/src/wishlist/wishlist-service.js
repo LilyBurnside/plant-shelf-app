@@ -34,8 +34,9 @@ const WishlistService = {
 
   deleteWish(db, id) {
     return db
-      .where({ id })
-      .delete();
+      .from('plants_wishes')
+      .where(id)
+      .del();
   }
 
 };

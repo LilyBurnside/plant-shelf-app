@@ -72,3 +72,26 @@ img {
   color: white !important;
   transition: .25s;
 }
+
+@media screen and (min-width: 1280px) {
+  .results {
+    width: 100%;
+  }
+
+  .results-plant-list {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .plant-results {
+    justify-content: space-evenly;
+    margin: 30px 25px; 
+    min-height: 820px;
+    max-width: 302px;
+  }
+}

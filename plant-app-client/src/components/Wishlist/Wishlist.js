@@ -47,11 +47,11 @@ export default class Wishlist extends React.Component {
       wishlistArray.push(<h2>Nothing here yet, take the quiz to add a plant!</h2>)
     } else {
       for(let i = 0; i < wishlist.length ; i++) {
-        console.log(wishlist[i].id)
+        // console.log(wishlist[i].id)
         wishlistArray.push(
           <div className="plant">
             <img src={`${wishlist[i].photo}`} alt={wishlist[i].sci_name} />
-            <h2>{!wishlist[i].cmn_name ? wishlist[i].sci_name : wishlist[i].cmn_name}</h2>
+            <h2 key={i}>{!wishlist[i].cmn_name ? wishlist[i].sci_name : wishlist[i].cmn_name}</h2>
             <p>Also known as: {wishlist[i].sci_name}</p>
             <p>Try to find it from these online sources:</p>
             <a href="https://www.gabriellaplants.com/">Gabriella Plants</a>
@@ -70,7 +70,9 @@ export default class Wishlist extends React.Component {
       <div className="wishlist">
         <h1>Your Future Plants</h1>
         <p>Wishlisted plants live here until you find them!</p>
-        {this.renderWishlist()}
+        <div className="wishlist-plant-list">
+          {this.renderWishlist()}
+        </div>
         <button className="quiz-restart" onClick={this.handleQuizButton}>Match me with more plants</button>
       </div>
     )

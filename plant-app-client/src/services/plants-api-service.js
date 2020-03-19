@@ -62,7 +62,7 @@ const PlantsApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify({
-        id: plantId,
+        plant_id: plantId,
       }),
     })
       .then(res => 
