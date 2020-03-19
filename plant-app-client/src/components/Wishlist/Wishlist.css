@@ -56,12 +56,25 @@ img {
   margin-bottom: 20px;
 }
 
-/*need to display results in a row on larger screens (results too)
-@media screen and (min-width: 750px) {
-  .plant-results {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
+@media screen and (min-width: 1280px) {
+  .wishlist{
+    width: 100%;
   }
-}*/
+
+  .wishlist-plant-list {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .plant{
+    justify-content: space-evenly;
+    margin: 30px 25px; 
+    min-height: 820px;
+    max-width: 302px;
+  }
+}

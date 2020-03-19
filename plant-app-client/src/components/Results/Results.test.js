@@ -24,7 +24,7 @@ describe('Results Component', () => {
       </Context.Provider>
     );
 
-    expect(toJson(wrapper)).toMatchSnapshot()
+    expect(toJson(wrapper)).toMatchSnapshot();
   })
 
 });

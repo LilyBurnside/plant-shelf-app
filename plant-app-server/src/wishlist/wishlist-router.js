@@ -18,15 +18,19 @@ const serializePlant = plant => ({
   care_level: plant.care_level,
 });
 
-const serializeUser = user => ({
-  id: user.id,
-  user_name: user.user_name,
-});
+// const serializeUser = user => ({
+//   id: user.id,
+//   user_name: user.user_name,
+// });
 
 const serializeWish = wish => ({
   id: wish.id,
   plant_id: wish.plant_id,
   user_id: wish.user_id,
+});
+
+const serializeDelete = plant => ({
+  plant_id: plant.plant_id
 });
 
 wishlistRouter
@@ -50,12 +54,15 @@ wishlistRouter
       })
       .catch(next);
   })
-  .delete((req, res, next) =>{
-    const { id } = req.body;
+  .delete(requireAuth, jsonBodyParser, (req, res, next) =>{
+    const { plant_id } = req.body;
+    const plant = { plant_id };
 
-    WishlistService.deleteWish(req.app.get('db'), id)
+    WishlistService.deleteWish(req.app.get('db'), plant)
       .then(() => {
-        res.status(204).end();
+        res
+          .status(204)
+          .end();
       })
       .catch(next);
   });
