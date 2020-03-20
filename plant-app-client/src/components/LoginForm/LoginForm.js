@@ -22,13 +22,10 @@ export default class LoginForm extends React.Component {
       password: password.value,
     })
       .then(res => {
-        console.log(res.payload.user_id)
-        this.context.setUserId(res.payload.user_id)
-      })
-      .then(res => {
         user_name.value = ''
         password.value = ''
         TokenService.saveAuthToken(res.token)
+        this.context.setUserId(res.payload.user_id)
         this.props.onLoginSuccess()
       })
       .catch(this.context.setError)
