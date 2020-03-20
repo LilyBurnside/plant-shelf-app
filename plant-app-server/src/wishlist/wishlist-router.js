@@ -18,11 +18,6 @@ const serializePlant = plant => ({
   care_level: plant.care_level,
 });
 
-// const serializeUser = user => ({
-//   id: user.id,
-//   user_name: user.user_name,
-// });
-
 const serializeWish = wish => ({
   id: wish.id,
   plant_id: wish.plant_id,
@@ -56,7 +51,6 @@ wishlistRouter
   })
   .delete(requireAuth, jsonBodyParser, (req, res, next) =>{
     const plant = req.body.plant_id;
-    console.log(plant);
 
     WishlistService.deleteWish(req.app.get('db'), plant)
       .then(() => {

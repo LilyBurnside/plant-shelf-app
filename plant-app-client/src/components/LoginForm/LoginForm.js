@@ -13,7 +13,6 @@ export default class LoginForm extends React.Component {
 
   static contextType = QuizContext
 
-
   handleSubmitJwtAuth = ev => {
     ev.preventDefault()
     this.setState({ error: null })
@@ -26,8 +25,8 @@ export default class LoginForm extends React.Component {
         user_name.value = ''
         password.value = ''
         TokenService.saveAuthToken(res.token)
-        this.props.onLoginSuccess()
         this.context.setUserId(res.payload.user_id)
+        this.props.onLoginSuccess()
       })
       .catch(this.context.setError)
     

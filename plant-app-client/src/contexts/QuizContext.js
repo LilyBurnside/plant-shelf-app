@@ -39,7 +39,7 @@ export class QuizProvider extends React.Component {
     questions:[],
     questionId: 1,
     translatedAnswers: [],
-    userId: null,
+    userId: '',
   };
 
   setError = error => {
@@ -106,7 +106,7 @@ export class QuizProvider extends React.Component {
   }
 
   clearUserId = userId => {
-    this.setState({ userId: null })
+    this.setState({ userId: '' })
   }
 
   render() {
