@@ -54,9 +54,7 @@ const PlantsApiService = {
           return res.json()
         }
       }
-        // (!res.ok)
-        //   ? res.json().then(e => Promise.reject(e))
-        //   : res.json()
+
       )
   },
 

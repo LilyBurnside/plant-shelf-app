@@ -9,12 +9,12 @@ const ResultsService = {
       .where(query);
   },
 
-  //don't need to show any new thing on the backend - this will be viewed on the wishlist route
-  insertWishlistPlant(db, newPlant) {
-    return db
-      .insert(newPlant)
-      .into('plants_wishes');
-  },
+  //posting to wishlist
+  // insertWishlistPlant(db, newPlant) {
+  //   return db
+  //     .insert(newPlant)
+  //     .into('plants_wishes');
+  // },
 
 };
 

@@ -113,7 +113,7 @@ function makeQuestionsArray() {
   ];
 }
 
-function makeWishesArray (users, plants) {
+function makeWishlistArray (users, plants) {
   return [
     {
       id: 1,
@@ -142,9 +142,22 @@ function makePlantsFixtures() {
   const testUsers = makeUsersArray();
   const testPlants = makePlantsArray();
   const testQuestions = makeQuestionsArray();
-  const testWishes = makeWishesArray(testUsers, testPlants);
+  const testWishes = makeWishlistArray(testUsers, testPlants);
   return { testUsers, testPlants, testQuestions, testWishes };
 }
+
+// function seedPlantsTables(db, users, plants, questions, wishes) {
+//   return db.transaction(async trx => {
+//     await seedUsers(trx, users)
+//     await trx.into('plants_base').insert(plants)
+//     await trx.into('plants_questions').insert(questions)
+//     // await trx.raw(
+//     //   `SELECT setval('plants_wishes_id_seq', ?)`,
+//     //   [plants[plants.length - 1].id]
+//     // )
+//     await trx.into('plants_wishes').insert(wishes)
+//   })
+// }
 
 function cleanTables(db) {
   return db.raw(
@@ -172,12 +185,26 @@ function seedUsers(db, users) {
     })
 }
 
+function makeAuthHeader(user, secret = process.env.JWT_SECRET) {
+  const token = jwt.sign({user_id: user.id}, secret, {
+    subject: user.user_name,
+    algorithm: 'HS256'
+  })
+  return `Bearer ${token}`
+}
+
+// function makeAuthHeader(user) {
+//   const token = Buffer.from(`${user.user_name}:${user.password}`).toString('base64')
+//   return `Bearer ${token}`
+// }
+
 module.exports = {
   makeUsersArray,
   makePlantsArray,
   makeQuestionsArray,
-  makeWishesArray,
+  makeWishlistArray,
   makePlantsFixtures,
   cleanTables,
   seedUsers,
+  makeAuthHeader,
 };

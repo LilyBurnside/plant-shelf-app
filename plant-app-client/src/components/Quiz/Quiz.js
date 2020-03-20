@@ -58,8 +58,7 @@ export default class Quiz extends React.Component {
         ? <p className="red">Question not found</p>
         : <p className="red">There was an error</p>
     } else if (!question) {
-      return <div className="loading">loading...</div>
-      //window.location.reload()
+      return <div className="loading">Refresh page</div>
     } else if (question.id === 5) {
       button = <button className="quiz-submit" type="submit" >Submit Quiz</button>
     } else {

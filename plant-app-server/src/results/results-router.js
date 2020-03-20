@@ -18,11 +18,6 @@ const serializePlant = plant => ({
   care_level: plant.care_level,
 });
 
-// const serializeUser = user => ({
-//   id: user.id,
-//   user_name: user.user_name,
-// });
-
 const serializeWish = wish => ({
   id: wish.id,
   plant_id: wish.plant_id,
@@ -38,18 +33,19 @@ resultsRouter
         res.json(plants.map(serializePlant));
       })
       .catch(next);  
-  })
-  .post(requireAuth, jsonBodyParser, (req, res, next) => {
-    const { user_id, plant_id } = req.body;
-    const newWish = { user_id, plant_id };
-
-    ResultsService.insertWishlistPlant(req.app.get('db'), newWish)
-      .then(wish => {
-        res
-          .status(201)
-          .json(wish.map(serializeWish));
-      })
-      .catch(next);
   });
+//posting to wishlist
+// .post(requireAuth, jsonBodyParser, (req, res, next) => {
+//   const { user_id, plant_id } = req.body;
+//   const newWish = { user_id, plant_id };
+
+//   ResultsService.insertWishlistPlant(req.app.get('db'), newWish)
+//     .then(wish => {
+//       res
+//         .status(201)
+//         .json(wish.map(serializeWish));
+//     })
+//     .catch(next);
+// });
 
 module.exports = resultsRouter;
