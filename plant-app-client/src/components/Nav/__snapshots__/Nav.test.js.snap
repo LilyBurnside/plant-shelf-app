@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav Component renders UI as expected if not logged in 1`] = `
+<Fragment>
+  <nav
+    className="Nav"
+  >
+    <h1>
+      <Link
+        to="/"
+      >
+         
+        Plant Shelf
+      </Link>
+    </h1>
+    <span
+      className="Nav__tagline--wide"
+    >
+      Find your plant
+    </span>
+    <div
+      className="Nav__not-logged-in"
+    >
+      <Link
+        to="/login"
+      >
+        Log in
+      </Link>
+    </div>
+  </nav>
+</Fragment>
+`;

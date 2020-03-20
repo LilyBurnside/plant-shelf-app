@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { shallow } from 'enzyme'
-// import toJson from 'enzyme-to-json'
+import { shallow } from 'enzyme'
+import toJson from 'enzyme-to-json'
 import { BrowserRouter } from 'react-router-dom';
 import Nav from './Nav';
 
@@ -17,5 +17,8 @@ describe('Nav Component', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 
-
+  it('renders UI as expected if not logged in', () => {
+    const wrapper = shallow(<Nav/>);
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 });
