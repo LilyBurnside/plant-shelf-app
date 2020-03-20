@@ -1,6 +1,7 @@
 import React from 'react'
 import TokenService from '../../services/token-service'
 import AuthApiService from '../../services/auth-api-service'
+import QuizContext from '../../contexts/QuizContext'
 import './LoginForm.css'
 
 export default class LoginForm extends React.Component {
@@ -9,6 +10,9 @@ export default class LoginForm extends React.Component {
   }
 
   state = { error: null }
+
+  static contextType = QuizContext
+
 
   handleSubmitJwtAuth = ev => {
     ev.preventDefault()
@@ -23,10 +27,9 @@ export default class LoginForm extends React.Component {
         password.value = ''
         TokenService.saveAuthToken(res.token)
         this.props.onLoginSuccess()
+        this.context.setUserId(res.payload.user_id)
       })
-      .catch(res => {
-        this.setState({ error: res.error })
-      })
+      .catch(this.context.setError)
     
   }
 

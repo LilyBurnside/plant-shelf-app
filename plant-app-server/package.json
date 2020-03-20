@@ -9,7 +9,8 @@
     "dev": "nodemon src/server.js",
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "env NODE_ENV=test npm run migrate",
-    "predeploy": "npm audit",
+    "migrate:production": "env SSL=true DATABASE_URL=$(heroku config:get DATABASE_URL) npm run migrate",
+    "predeploy": "npm audit && npm run migrate:production",
     "deploy": "git push heroku master"
   },
   "keywords": [],
@@ -22,9 +23,10 @@
     "dotenv": "^8.2.0",
     "expres": "0.0.5",
     "express": "^4.17.1",
-    "helmet": "^3.21.2",
+    "helmet": "^3.21.3",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.20.11",
+    "knex": "^0.20.12",
+    "minimist": "^1.2.5",
     "mocha": "^7.1.1",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.2",
@@ -33,6 +35,6 @@
     "treeize": "^2.1.2"
   },
   "devDependencies": {
-    "postgrator-cli": "^3.2.0"
+    "postgrator-cli": "^3.3.0"
   }
 }

@@ -11,10 +11,10 @@ describe('Auth Endpoints', function() {
   const testUser = testUsers[0];
 
   before('make knex instance', () => {
-    console.log(process.env.TEST_DB_URL);
+    console.log(process.env.TEST_DATABASE_URL);
     db = knex({
       client: 'pg',
-      connection: process.env.TEST_DB_URL,
+      connection: process.env.TEST_DATABASE_URL,
     });
     app.set('db', db);
   });
@@ -75,25 +75,25 @@ describe('Auth Endpoints', function() {
       });
     });
 
-    // it('responds 200 and JWT auth token using secret when valid credentials', () => {
-    //   const validCreds = {
-    //     user_name: testUser.user_name,
-    //     password: testUser.password
-    //   };
-    //   const expectedToken = jwt.sign(
-    //     { user_id: testUser.id},
-    //     process.env.JWT_SECRET,
-    //     {
-    //       subject: testUser.user_name,
-    //       algorithm: 'HS256',
-    //     }
-    //   );
-    //   return supertest(app)
-    //     .post('/api/auth/login')
-    //     .send(validCreds)
-    //     .expect(200, {
-    //       token: expectedToken,
-    //     });
-    // });
+    it('responds 200 and JWT auth token using secret when valid credentials', () => {
+      const validCreds = {
+        user_name: testUser.user_name,
+        password: testUser.password
+      };
+      const expectedToken = jwt.sign(
+        { user_id: testUser.id},
+        process.env.JWT_SECRET,
+        {
+          subject: testUser.user_name,
+          algorithm: 'HS256',
+        }
+      );
+      return supertest(app)
+        .post('/api/auth/login')
+        .send(validCreds)
+        .expect(200, {
+          token: expectedToken,
+        });
+    });
   });
 });

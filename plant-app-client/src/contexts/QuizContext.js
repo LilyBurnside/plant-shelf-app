@@ -1,14 +1,15 @@
 import React from 'react'
 
 const QuizContext = React.createContext({
-  questions: [],
-  question: null,
-  questionId: 1,
   addedMessage: [<p>Added to wishlist!</p>],
   answers: [],
-  translatedAnswers: [],
-  plants: [],
   error: null,
+  plants: [],
+  question: null,
+  questions: [],
+  questionId: 1,
+  translatedAnswers: [],
+  userId: null,
   setError: () => {},
   clearError: () => {},
   setQuestions: () => {},
@@ -21,26 +22,29 @@ const QuizContext = React.createContext({
   setTranslatedAnswers: () => {},
   addTranslatedAnswer: () => {},
   setPlants: () => {},
-  clearPlants: () => {}
+  clearPlants: () => {},
+  setUserId: () => {},
+  clearUserId: () => {}
 })
 
 export default QuizContext
 
 export class QuizProvider extends React.Component {
   state = {
-    questions:[],
-    question: null,
-    questionId: 1,
     addedMessage: [<p>Added to wishlist!</p>],
     answers: [],
-    translatedAnswers: [],
-    plants: [],
     error: null,
+    plants: [],
+    question: null,
+    questions:[],
+    questionId: 1,
+    translatedAnswers: [],
+    userId: null,
   };
 
   setError = error => {
-    console.error(error)
-    this.setState({ error })
+    console.log(error)
+    this.setState({ error: error })
   }
 
   clearError = () => {
@@ -97,16 +101,25 @@ export class QuizProvider extends React.Component {
     this.setState({ plants: [] })
   }
 
+  setUserId = userId => {
+    this.setState({ userId })
+  }
+
+  clearUserId = userId => {
+    this.setState({ userId: null })
+  }
+
   render() {
     const value ={
-      questions: this.state.questions,
-      question: this.state.question,
-      questionId: this.state.questionId,
       addedMessage: this.state.addedMessage,
       answers: this.state.answers,
-      translatedAnswers: this.state.translatedAnswers,
-      plants: this.state.plants,
       error: this.state.error,
+      plants: this.state.plants,
+      question: this.state.question,
+      questions: this.state.questions,
+      questionId: this.state.questionId,
+      translatedAnswers: this.state.translatedAnswers,
+      userId: this.state.userId,
       setError: this.setError,
       clearError: this.clearError,
       setQuestions: this.setQuestions,
@@ -120,6 +133,8 @@ export class QuizProvider extends React.Component {
       addTranslatedAnswer: this.addTranslatedAnswer,
       setPlants: this.setPlants,
       clearPlants: this.clearPlants,
+      setUserId: this.setUserId,
+      clearUserId: this.clearUserId,
     }
     return (
       <QuizContext.Provider value={value}>

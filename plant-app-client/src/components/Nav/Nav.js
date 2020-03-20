@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import QuizContext from '../../contexts/QuizContext'
 import TokenService from '../../services/token-service'
 import './Nav.css'
 
 export default class Nav extends Component {
 
+  static contextType = QuizContext
+
   handleLogoutClick = () => {
     TokenService.clearAuthToken()
+    this.context.clearUserId()
     window.location.reload()
   }
 

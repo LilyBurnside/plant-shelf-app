@@ -47,10 +47,16 @@ const PlantsApiService = {
         user_id: userId,
       }),
     })
-      .then(res => 
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
+      .then(res => {
+        if (!res.ok){
+          throw new Error('Could not add to wishlist')
+        } else {
+          return res.json()
+        }
+      }
+        // (!res.ok)
+        //   ? res.json().then(e => Promise.reject(e))
+        //   : res.json()
       )
   },
 
@@ -65,11 +71,11 @@ const PlantsApiService = {
         plant_id: plantId,
       }),
     })
-      .then(res => 
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-        )
+      .then( res => {
+        if (!res.ok){
+          throw new Error('Res threw error')
+        }
+      })
   }
   
 }

@@ -31,11 +31,11 @@ export default class Wishlist extends React.Component {
   handleDeleteButton = (id, e) => {
     e.preventDefault()
     const plantId = id
-    console.log(plantId)
+
     PlantsApiService.deleteWish(plantId)
-      // .then(window.location.reload())
+      .then(() => {this.setState({ wishlist: this.state.wishlist.filter(w => w.id !== plantId)})})
       .catch(res=> {
-        this.setState({error: res.error})
+        this.setState({error: res})
       })
   }
 
@@ -44,7 +44,11 @@ export default class Wishlist extends React.Component {
 
     const wishlistArray = []
     if(!Array.isArray(wishlist) || !wishlist.length) {
-      wishlistArray.push(<h2>Nothing here yet, take the quiz to add a plant!</h2>)
+      wishlistArray.push(
+        <div className="no-wishes">
+          <h2>Nothing here yet, take the quiz to add a plant!</h2>
+        </div>
+      )
     } else {
       for(let i = 0; i < wishlist.length ; i++) {
         // console.log(wishlist[i].id)

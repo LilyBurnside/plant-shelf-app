@@ -8,7 +8,6 @@ const jsonBodyParser = express.json();
 authRouter
   .route('/login')
   .post(jsonBodyParser, async (req, res, next) => {
-    console.log('start!')
     const reqFields = ['user_name', 'password'];
     for(const field of reqFields) {
       if (!(field in req.body)) {
@@ -36,7 +35,7 @@ authRouter
       const sub = user.user_name
       const payload = { user_id: user.id }
       const token = await AuthService.createJwt(sub, payload);
-      res.json({ token });
+      res.json({ token, payload });
     } catch(e) {
       res.status(500).send({ error: 'some error occured' })
       console.log(e)

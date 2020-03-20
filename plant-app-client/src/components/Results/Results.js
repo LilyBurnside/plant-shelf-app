@@ -102,13 +102,12 @@ export default class Results extends React.Component {
 
   handleAddWish = (id, e) => {
     e.preventDefault()
-    //how do I know what userId is?
-    const userId = 1
+    const userId = this.context.userId || 1
     const plantId = id
 
     PlantsApiService.postWish(userId, plantId)
-      .then(alert("Plant was added to the wishlist!"))
-      .catch(this.context.setError)
+      .then(() => alert("Plant was added to the wishlist!"))
+      .catch(error => this.context.setError(error))
   }
 
   handleQuizButton = e => {
@@ -121,7 +120,11 @@ export default class Results extends React.Component {
     
     const plantsArray = []
     if(!Array.isArray(plants) || !plants.length) {
-      plantsArray.push(<h2>No plants found matching you :(</h2>)
+      plantsArray.push(
+        <div className="no-plants">
+          <h2 className="no-plants-message">No plants found matching you :(</h2>
+        </div>
+        )
     } else {
       for(let i = 0; i < plants.length ; i++ ) {
         plantsArray.push(
@@ -135,7 +138,11 @@ export default class Results extends React.Component {
               <li>Pet safe? {plants[i].pet_safe}</li>
               <li>Good for a {plants[i].size} space</li>
             </ul>
-            <button className="wishlist-button" id={plants[i].id} onClick={(e) => this.handleAddWish(plants[i].id, e)}>add to my wishlist</button>
+            {TokenService.hasAuthToken()
+              ?< button className="wishlist-button" id={plants[i].id} onClick={(e) => this.handleAddWish(plants[i].id, e)}>add to my wishlist</button>
+              : <div></div>
+            }
+            
           </div>
         )
       }
@@ -146,15 +153,14 @@ export default class Results extends React.Component {
   render(){
     const { plants, error } = this.context
     let content 
-    if (!TokenService.hasAuthToken()) {
-      content = <p>You'll have to log in to add to Wishlist</p>
-    } else if (error) {
+    if (error) {
       content = (error.error === `Question doesn't exist`)
         ? <p className="red">Question not found</p>
         : <p className="red">There was an error</p>
     } else if (!plants) {
       content = <div className="loading">loading...</div>
-    }
+    } 
+
     return(
       <div className="results">
         <h1>Some plants for you!</h1>

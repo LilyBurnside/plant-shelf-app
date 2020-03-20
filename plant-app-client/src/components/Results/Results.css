@@ -1,7 +1,3 @@
-* {
-  font-family: 'Spartan';
-}
-
 .results {
   display: flex;
   align-items: center;
@@ -11,6 +7,12 @@
 img {
   width: 300px;
   margin-top: 50px;
+}
+
+.no-plants {
+  background-color: rgba(255,255,255, 0.7);
+  border-radius: 15px;
+  padding: 10px;
 }
 
 .plant-results {

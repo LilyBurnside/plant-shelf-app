@@ -55,8 +55,8 @@ wishlistRouter
       .catch(next);
   })
   .delete(requireAuth, jsonBodyParser, (req, res, next) =>{
-    const { plant_id } = req.body;
-    const plant = { plant_id };
+    const plant = req.body.plant_id;
+    console.log(plant);
 
     WishlistService.deleteWish(req.app.get('db'), plant)
       .then(() => {
