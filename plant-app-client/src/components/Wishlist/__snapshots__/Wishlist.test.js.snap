@@ -13,9 +13,13 @@ exports[`Wishlist Component renders a message with no plants when empty 1`] = `
   <div
     className="wishlist-plant-list"
   >
-    <h2>
-      Nothing here yet, take the quiz to add a plant!
-    </h2>
+    <div
+      className="no-wishes"
+    >
+      <h2>
+        Nothing here yet, take the quiz to add a plant!
+      </h2>
+    </div>
   </div>
   <button
     className="quiz-restart"

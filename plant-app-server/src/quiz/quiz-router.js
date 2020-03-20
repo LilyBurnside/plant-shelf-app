@@ -13,14 +13,6 @@ const serializeQuestion = question => ({
   answer_4: question.answer_4
 });
 
-// const serializeAnswer = answer => ({
-//   id: answer.id,
-//   question: answer.question,
-//   answer_text: answer.answer_text,
-//   answer_value: answer.answer_value,
-// });
-
-
 
 quizRouter
   .route('/')
@@ -31,12 +23,5 @@ quizRouter
       })
       .catch(next);
   });
-// .get((req, res, next) => {
-//   QuizService.getAllAnswers(req.app.get('db'))
-//     .then(answer => {
-//       res.json(answer.map(serializeAnswer));
-//     })
-//     .catch(next);
-// });
 
 module.exports = quizRouter;
