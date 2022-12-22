@@ -24,7 +24,7 @@
     "expres": "0.0.5",
     "express": "^4.17.1",
     "helmet": "^3.21.3",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "knex": "^0.20.12",
     "minimist": "^1.2.5",
     "mocha": "^7.1.1",
